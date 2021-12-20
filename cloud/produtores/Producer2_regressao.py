@@ -26,7 +26,7 @@ def acked(err, msg):
         delivered_records += 1  
         print("Produtor gravou no tópico '{}', partição [{}] e @ offset {}".format(msg.topic(), msg.partition(), msg.offset()))  
 
-fator=2
+fator=1
 
 for n in range(fator):
     with open('dados/dadosBasicos/forest_fire.csv', 'r') as read_obj:

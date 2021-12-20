@@ -1,7 +1,4 @@
-import numpy as np
-import pandas as pd
 from matplotlib import pyplot as plt
-import json,csv
 from kafka import KafkaConsumer
 from sklearn.svm import SVR
 from sklearn.preprocessing import StandardScaler
@@ -10,7 +7,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
-
+import json,csv
+import numpy as np
+import pandas as pd
 
 def modelo(test_size, model_name, model_set):
 
@@ -100,9 +99,10 @@ def modelo(test_size, model_name, model_set):
             b=grid_SVR.predict(dados_teste)
             print('VETOR DE PREVISÕES')
             print(10**(b))
-
+            
+    ##RandomForestRegressor        
     if model_name == 'rf':
-        ##RandomForestRegressor
+        
 
         param_grid = {'max_depth': [5,10,15,20,50], 'max_leaf_nodes': [2,5,10], 'min_samples_leaf': [2,5,10],
                     'min_samples_split':[2,5,10]}
@@ -148,38 +148,3 @@ def modelo(test_size, model_name, model_set):
             b=grid_RF.predict(dados_teste)
             print('B ABAIXO')
             print(10**(b))
-
-        #DecisionTreeRegressor
-        """from sklearn.tree import DecisionTreeRegressor
-
-        tree_model = DecisionTreeRegressor(max_depth=10,criterion='mae')
-        tree_model.fit(scaler.fit_transform(X_train),scaler.fit_transform(y_train))
-
-        a=tree_model.predict(X_test)
-        print("RMSE for Decision Tree:",np.sqrt(np.mean((y_test-a)**2)))
-
-        plt.xlabel("Actual area burned")
-        plt.ylabel("Error")
-        plt.grid(True)
-        plt.scatter(10**(y_test),10**(a)-10**(y_test))
-
-        plt.title("Histogram of prediction errors\n",fontsize=18)
-        plt.xlabel("Prediction error ($)",fontsize=14)
-        plt.grid(True)
-        plt.hist(10**(a.reshape(a.size,))-10**(y_test),bins=50)
-
-        rec_DT=[]
-        for i in range(tol_max):
-            rec_DT.append(rec(a,y_test,i))
-
-        plt.figure(figsize=(5,5))
-        plt.title("REC curve for the single Decision Tree\n",fontsize=15)
-        plt.xlabel("Absolute error (tolerance) in prediction ($)")
-        plt.ylabel("Percentage of correct prediction")
-        plt.xticks([i for i in range(0,tol_max+1,5)])
-        plt.ylim(-10,100)
-        plt.yticks([i*20 for i in range(6)])
-        plt.grid(True)
-        plt.plot(range(tol_max),rec_DT)"""
-
-        #print('Porcentagem de previsão correta DT\n',rec_DT)

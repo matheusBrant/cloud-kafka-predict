@@ -1,21 +1,20 @@
-import pandas as pd
-import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 from csv import reader
+import pandas as pd
+import numpy as np
 import warnings
 
 warnings.filterwarnings("ignore")
 
 dataset_forestfire = pd.read_csv('dados/dadosClassificacao/forest_fire_classificacao.csv')  
-#dataset_forestfire=dataset_forestfire.drop(['area'],axis=1) 
 
 target = dataset_forestfire.pop('fire')
 
 svc = SVC(gamma="auto")
 
-#Testando o modelo 'svc' na nossa base 'iris'
+#Testando o modelo 'svc' 
 cv_result = cross_val_score(svc, dataset_forestfire, target , cv=10, scoring="accuracy")
 
 #Retorna a acurácia em porcentagem do nosso modelo

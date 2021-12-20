@@ -10,22 +10,15 @@ if __name__ == '__main__':
     'group.id': "fire-predict", 
     'session.timeout.ms': 6000,
     'auto.offset.reset': 'latest',
-    'bootstrap.servers': 'cell-1.streaming.sa-saopaulo-1.oci.oraclecloud.com:9092', #usually of the form cell-1.streaming.<region>.oci.oraclecloud.com:9092  
+    'bootstrap.servers': 'cell-1.streaming.sa-saopaulo-1.oci.oraclecloud.com:9092', 
     'security.protocol': 'SASL_SSL',  
-  
-    'ssl.ca.location': certifi.where(),  # from step 6 of Prerequisites section
-     # optionally instead of giving path as shown above, you can do 1. pip install certifi 2. import certifi and
-     # 3. 'ssl.ca.location': certifi.where()
-  
+    'ssl.ca.location': certifi.where(), 
     'sasl.mechanism': 'PLAIN',  
     'sasl.username': 'matheusbrant/oracleidentitycloudservice/matheusbrantgo@gmail.com/ocid1.streampool.oc1.sa-saopaulo-1.amaaaaaaz2nkdgaatblh5dkumqibancjusgaghu24vhrec4yvhacwhrbixta',  # from step 2 of Prerequisites section
-    'sasl.password': '2P0vj>Fxh4ghGe.KHD:p',  # from step 7 of Prerequisites section
+    'sasl.password': '2P0vj>Fxh4ghGe.KHD:p',  
    }  
 
-# Create Consumer instance
 consumer = Consumer(conf)
-
-# Subscribe to topic
 consumer.subscribe([topic])
 
 fileName = r"'../dados/dadosRegressao/dado_recebido.csv'"
@@ -34,12 +27,7 @@ if os.path.isfile(fileName) == True:
 else:
     print('--> Aguardando dados... ⏳')
 
-# Process messages
 try:
-    '''if os.stat('dados/dado_recebido.csv').st_size == 0:
-        print("True")
-    else:
-        os.remove('dados/dado_recebido.csv')'''
     with open('../dados/dadosRegressao/dado_recebido.csv', 'w', newline='\n') as file:
         writer = csv.writer(file)
         writer.writerow(["X","Y","month","day","FFMC","DMC","DC","ISI","temp","RH","wind","rain","area"])
@@ -51,8 +39,7 @@ try:
         if msg.error():
             raise KafkaException(msg.error())
         else:
-            # Proper message
-            sys.stderr.write('%% %s [%d] at offset %d with key %s:\n' %
+            sys.stderr.write('%% %s [%d] do offset %d com a key %s:\n' %
                                 (msg.topic(), msg.partition(), msg.offset(),
                                 str(msg.key())))
 
@@ -79,9 +66,8 @@ except KeyboardInterrupt:
     sys.stderr.write('%% \n--> Interrompido pelo usuário ❌\n')
 
 finally:
-    # Close down consumer to commit final offsets.
     consumer.close()
 
 #aplicando os dados ao modelo
-#modelo(0.4)
+#parametros: test_size, model_name, set
 modelo(0.4, 'svr','train')
