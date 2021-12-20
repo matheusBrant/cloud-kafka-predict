@@ -25,7 +25,7 @@ fileName = r"'../dados/dadosRegressao/dado_recebido_predict.csv'"
 if os.path.isfile(fileName) == True:
     os.remove('../dados/dadosRegressao/dado_recebido_predict.csv')
 else:
-    print('Colhendo dados...')
+    print('--> Aguardando dados... ⏳')
 
 try:
     with open('../dados/dadosRegressao/dado_recebido_predict.csv', 'w', newline='\n') as file:

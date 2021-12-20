@@ -26,7 +26,7 @@ fileName = r"'../dados/dadosClassificacao/forest_fire_classificacao_predict.csv'
 if os.path.isfile(fileName) == True:
     os.remove('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv')
 else:
-    print('Aguardando dados...')
+    print('--> Aguardando dados... ⏳')
 
 try:
     with open('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv', 'w', newline='\n') as file:
@@ -34,7 +34,7 @@ try:
         writer.writerow(["X","Y","FFMC","DMC","DC","ISI","temp","RH","wind","rain","area"])
 
     while True:
-        print('Aguardando dados...')
+        print('--> Aguardando dados... ⏳')
 
         msg = consumer.poll(timeout=10.0)
         if msg is None:
