@@ -22,14 +22,14 @@ if __name__ == '__main__':
 consumer = Consumer(conf)
 consumer.subscribe([topic])
 
-fileName = r"'dados/dadosClassificacao/forest_fire_classificacao_predict.csv'"
+fileName = r"'../dados/dadosClassificacao/forest_fire_classificacao_predict.csv'"
 if os.path.isfile(fileName) == True:
-    os.remove('dados/dadosClassificacao/forest_fire_classificacao_predict.csv')
+    os.remove('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv')
 else:
     print('Aguardando dados...')
 
 try:
-    with open('dados/dadosClassificacao/forest_fire_classificacao_predict.csv', 'w', newline='\n') as file:
+    with open('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv', 'w', newline='\n') as file:
         writer = csv.writer(file)
         writer.writerow(["X","Y","FFMC","DMC","DC","ISI","temp","RH","wind","rain","area"])
 
@@ -47,7 +47,7 @@ try:
                                 (msg.topic(), msg.partition(), msg.offset(),
                                 str(msg.key().decode('utf-8'))))
 
-            with open('dados/dadosClassificacao/forest_fire_classificacao_predict.csv', 'a', newline='\n') as file:
+            with open('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv', 'a', newline='\n') as file:
 
                 writer = csv.writer(file)
                 output=msg.value().decode('utf-8')
@@ -62,10 +62,10 @@ try:
                 mega=5
                 if mega > 5:
                     print('-> Limite de arquivo excedido <-')
-                    os.remove('dados/dadosClassificacao/forest_fire_classificacao_predict.csv')
+                    os.remove('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv')
                     break
                 tam_mb = bt*mega
-                if os.stat('dados/dadosClassificacao/forest_fire_classificacao_predict.csv').st_size >= tam_mb:
+                if os.stat('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv').st_size >= tam_mb:
                     print('------------------------------------------- \n -> Arquivo chegou no limite especificado <-')
                     break
 

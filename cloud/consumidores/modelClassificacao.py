@@ -8,7 +8,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-dataset_forestfire = pd.read_csv('dados/dadosClassificacao/forest_fire_classificacao.csv')  
+dataset_forestfire = pd.read_csv('../dados/dadosClassificacao/forest_fire_classificacao.csv')  
 
 target = dataset_forestfire.pop('fire')
 

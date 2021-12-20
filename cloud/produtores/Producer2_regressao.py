@@ -29,7 +29,7 @@ def acked(err, msg):
 fator=1
 
 for n in range(fator):
-    with open('dados/dadosBasicos/forest_fire.csv', 'r') as read_obj:
+    with open('../dados/dadosBasicos/forest_fire.csv', 'r') as read_obj:
         csv_reader = reader(read_obj)
         header = next(csv_reader)
         if header != None:
