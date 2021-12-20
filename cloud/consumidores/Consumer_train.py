@@ -39,7 +39,7 @@ try:
         if msg.error():
             raise KafkaException(msg.error())
         else:
-            sys.stderr.write('%% %s [%d] do offset %d com a key %s:\n' %
+            sys.stderr.write('%% %s [%d] do offset %d, chaveado a key: %s:\n' %
                                 (msg.topic(), msg.partition(), msg.offset(),
                                 str(msg.key())))
 

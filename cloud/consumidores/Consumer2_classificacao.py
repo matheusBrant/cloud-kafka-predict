@@ -43,7 +43,7 @@ try:
             raise KafkaException(msg.error())
         else:
             # Proper message
-            sys.stderr.write('%% %s [%d] do offset %d com a key %s:\n' %
+            sys.stderr.write('%% %s [%d] do offset %d, chaveado a key: %s:\n' %
                                 (msg.topic(), msg.partition(), msg.offset(),
                                 str(msg.key().decode('utf-8'))))
 
@@ -59,7 +59,8 @@ try:
                 predict(strin)
 
                 bt=1000000
-                mega=5
+                mega=2
+                #limite maximo para nao travar meu pc
                 if mega > 5:
                     print('-> Limite de arquivo excedido <-')
                     os.remove('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv')
@@ -70,7 +71,7 @@ try:
                     break
 
 except KeyboardInterrupt:
-    sys.stderr.write('%% \n\nAborted by user\n')
+    sys.stderr.write('%% \n--> Interrompido pelo usuário ❌\n')
 
 finally:
     consumer.close()

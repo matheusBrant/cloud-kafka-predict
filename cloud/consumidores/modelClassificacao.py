@@ -22,7 +22,7 @@ print("Acurácia com cross validation:", cv_result.mean()*100)
 
 
 svc.fit(dataset_forestfire, target)
-#print('\n\n',svc.predict([[6,5,63.5,70.8,665.3,0.8,17.0,72,6.7,0.0]]))
+#print('\n\n',svc.predict([[1,4,91.5,130.1,807.1,7.5,21.3,35,2.2,0.0,28.19]]))
                 
 def predict(row):
     predict = svc.predict([row])
