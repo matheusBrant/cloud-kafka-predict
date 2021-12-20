@@ -47,7 +47,7 @@ try:
                                 (msg.topic(), msg.partition(), msg.offset(),
                                 str(msg.key().decode('utf-8'))))
 
-            with open('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv', 'a', newline='\n') as file:
+            with open('../dados/dadosClassificacao/forest_fire_classificacao_predict.csv', 'w', newline='\n') as file:
 
                 writer = csv.writer(file)
                 output=msg.value().decode('utf-8')
