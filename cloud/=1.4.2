@@ -1,0 +1,25 @@
+Collecting confluent-kafka[avro,json,protobuf]
+  Using cached confluent_kafka-1.7.0-cp38-cp38-manylinux2010_x86_64.whl (2.7 MB)
+Collecting jsonschema
+  Using cached jsonschema-4.2.1-py3-none-any.whl (69 kB)
+Requirement already satisfied: requests in ./ccloud-venv/lib/python3.8/site-packages (from confluent-kafka[avro,json,protobuf]) (2.26.0)
+Collecting pyrsistent
+  Using cached pyrsistent-0.18.0-cp38-cp38-manylinux1_x86_64.whl (118 kB)
+Collecting avro-python3==1.10.0
+  Using cached avro_python3-1.10.0-py3-none-any.whl
+Collecting fastavro>=1.0
+  Using cached fastavro-1.4.7-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.6 MB)
+Collecting protobuf
+  Using cached protobuf-3.19.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+Collecting importlib-resources>=1.4.0
+  Using cached importlib_resources-5.4.0-py3-none-any.whl (28 kB)
+Collecting attrs>=17.4.0
+  Using cached attrs-21.2.0-py2.py3-none-any.whl (53 kB)
+Requirement already satisfied: idna<4,>=2.5 in ./ccloud-venv/lib/python3.8/site-packages (from requests->confluent-kafka[avro,json,protobuf]) (3.3)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./ccloud-venv/lib/python3.8/site-packages (from requests->confluent-kafka[avro,json,protobuf]) (1.26.7)
+Requirement already satisfied: charset-normalizer~=2.0.0 in ./ccloud-venv/lib/python3.8/site-packages (from requests->confluent-kafka[avro,json,protobuf]) (2.0.9)
+Requirement already satisfied: certifi>=2017.4.17 in ./ccloud-venv/lib/python3.8/site-packages (from requests->confluent-kafka[avro,json,protobuf]) (2021.10.8)
+Collecting zipp>=3.1.0
+  Using cached zipp-3.6.0-py3-none-any.whl (5.3 kB)
+Installing collected packages: zipp, pyrsistent, importlib-resources, attrs, protobuf, jsonschema, fastavro, confluent-kafka, avro-python3
+Successfully installed attrs-21.2.0 avro-python3-1.10.0 confluent-kafka-1.7.0 fastavro-1.4.7 importlib-resources-5.4.0 jsonschema-4.2.1 protobuf-3.19.1 pyrsistent-0.18.0 zipp-3.6.0
